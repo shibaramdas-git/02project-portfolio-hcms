@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { GiSnake } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
 const StyledNavbar = styled.nav``;
@@ -11,8 +12,7 @@ const Container = styled.div`
 const Menuicon = styled.div``;
 
 const NavExtended = styled.div`
-  transition: height 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
+  transition: height 0.3s;
   background-color: black;
   color: white;
   font-size: 2.5rem;
@@ -20,34 +20,39 @@ const NavExtended = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 999;
+  z-index: 2;
+  /* Overlay effect solution start ....................Wwwwooooohhhhooooooo.......i have done it.... without anyones help(except google)*/
   height: ${({ showNav }) => (showNav ? "100vh" : "0")};
-
-  span {
-    position: absolute;
-    top: 5%;
-    right: 4%;
-    z-index: 1000;
-    display: ${({ showNav }) => (showNav ? "block" : "none")};
+  overflow: hidden;
+  ul,
+  div {
+    opacity: ${({ showNav }) => (showNav ? "1" : "0")};
+    transition: opacity 0.2s;
   }
+  /* Overlay effect solution ends here */
   ul {
-    display: ${({ showNav }) => (showNav ? "flex" : "none")};
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     list-style-type: none;
-    line-height: 1.75;
-    height: 100vh;
   }
-  ul a {
+  a,
+  span {
+    display: block;
     text-decoration: none;
-    color: #ffffffcf;
-    transition: 0.5s ease-in-out;
+    color: white;
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
   }
-  ul a:hover {
-    opacity: 1;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 30px;
+    font-size: 0.8em;
   }
 `;
 
@@ -63,8 +68,17 @@ function Navbar() {
         <Menuicon onClick={handleClick}>
           Menu <RxHamburgerMenu />
         </Menuicon>
-        <NavExtended showNav={showNav}>
-          <span onClick={handleClick}>X</span>
+        <NavExtended showNav={showNav} onClick={handleClick}>
+          <div>
+            <span>
+              <Link to="/">
+                <GiSnake />
+              </Link>
+            </span>
+            <span>
+              <Link>X</Link>
+            </span>
+          </div>
           <ul>
             <li>
               <Link to="/works">Works</Link>
