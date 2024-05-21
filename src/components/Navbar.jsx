@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const StyledNavbar = styled.nav`
   padding: 0 4.5%;
+  background-color: rgba(255, 255, 255, 0.2);
 `;
 const Container = styled.div`
   display: flex;
@@ -19,7 +20,9 @@ const Container = styled.div`
     color: black;
     text-decoration: none;
   }
-  div:hover {
+`;
+const Navtext = styled.div`
+  &:hover {
     animation: shake 0.8s;
   }
   @keyframes shake {
@@ -37,7 +40,7 @@ const Container = styled.div`
     }
   }
 `;
-const Menuicon = styled.div`
+const Menuicon = styled(Navtext)`
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -99,9 +102,9 @@ function Navbar() {
   return (
     <StyledNavbar>
       <Container>
-        <div>
+        <Navtext>
           <Link to="/">Alev</Link>
-        </div>
+        </Navtext>
         <Menuicon onClick={handleClick}>
           Menu <RxHamburgerMenu />
         </Menuicon>
