@@ -4,18 +4,53 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { GiSnake } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
-const StyledNavbar = styled.nav``;
+const StyledNavbar = styled.nav`
+  padding: 0 4.5%;
+`;
 const Container = styled.div`
   display: flex;
-  transition: 0.5s ease-in-out;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 70px;
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: 0.9px;
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  div:hover {
+    animation: shake 0.8s;
+  }
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(10px);
+    }
+    50% {
+      transform: translateX(-10px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
 `;
-const Menuicon = styled.div``;
+const Menuicon = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+`;
 
 const NavExtended = styled.div`
   transition: height 0.3s;
   background-color: black;
   color: white;
-  font-size: 2.5rem;
+  font-size: 3.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 1.5px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -42,17 +77,19 @@ const NavExtended = styled.div`
     display: block;
     text-decoration: none;
     color: white;
-    opacity: 0.7;
+    opacity: 0.8;
     &:hover {
       opacity: 1;
     }
   }
-
   div {
     display: flex;
     justify-content: space-between;
     margin: 25px 30px;
     font-size: 0.8em;
+  }
+  @media (max-width: 768px) {
+    font-size: 3rem;
   }
 `;
 
