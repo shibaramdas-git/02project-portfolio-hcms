@@ -60,11 +60,11 @@ const NavExtended = styled.div`
   left: 0;
   z-index: 2;
   /* Overlay effect solution start ....................Wwwwooooohhhhooooooo.......i have done it.... without anyones help(except google)*/
-  height: ${({ showNav }) => (showNav ? "100vh" : "0")};
+  height: ${({ shownav }) => (shownav ? "100vh" : "0")};
   overflow: hidden;
   ul,
   div {
-    opacity: ${({ showNav }) => (showNav ? "1" : "0")};
+    opacity: ${({ shownav }) => (shownav ? "1" : "0")};
     transition: opacity 0.2s;
   }
   /* Overlay effect solution ends here */
@@ -97,8 +97,8 @@ const NavExtended = styled.div`
 `;
 
 function Navbar() {
-  const [showNav, setShowNav] = useState(false);
-  const handleClick = () => setShowNav(!showNav);
+  const [shownav, setShownav] = useState(false);
+  const handleClick = () => setShownav(!shownav);
   return (
     <StyledNavbar>
       <Container>
@@ -108,7 +108,7 @@ function Navbar() {
         <Menuicon onClick={handleClick}>
           Menu <RxHamburgerMenu />
         </Menuicon>
-        <NavExtended showNav={showNav} onClick={handleClick}>
+        <NavExtended shownav={shownav} onClick={handleClick}>
           <div>
             <span>
               <Link to="/">
