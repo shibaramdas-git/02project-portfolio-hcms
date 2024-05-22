@@ -4,10 +4,15 @@ import Projectcard from "../components/Projectcard";
 import { Link } from "react-router-dom";
 import Servicecard from "../components/Servicecard";
 
-const StyledHome = styled.div``;
+const StyledHome = styled.div`
+  padding: 8% 12%;
+`;
 const Topsection = styled.div``;
-const Topimg = styled.div``;
-const Topheading = styled.div``;
+const Topheading = styled.div`
+  h4 {
+    font-weight
+  }
+`;
 const Toppara = styled.div``;
 
 const Worksection = styled.div``;
@@ -25,13 +30,6 @@ function Home() {
   return (
     <StyledHome>
       <Topsection>
-        <Topimg>
-          <img
-            src="https://images.squarespace-cdn.com/content/v1/60199edc82583d5ba5005499/d7951a2f-45e2-49a0-8f93-03aa4d09f2e8/image-asset.jpg?format=2500w"
-            alt="Style img"
-          />
-        </Topimg>
-
         <Topheading>
           <h4>Design - Development - Webflow</h4>
           <div></div>Digital Creative Solutions
@@ -47,24 +45,28 @@ function Home() {
         <h2>Selected Works</h2>
         <Selectedwork>
           <StyledProjectcard
+            id="1"
             imgurl="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6426eca048f497375a7f7b2a_work8.webp"
             title="Punch Man"
             description="lorem sldkj skjdflk dflsdkf;lskj jdlksdjf dkfjl;s ajkjdlkjdflk jsdlf ldflkdf ldjsf;kdsf jkadslfad;sf l;kdf ljld;  ajdflk dsfkj adsl;fj ldskj fj dkslfjd kljdlkj kljlj kjdvjnvhncv  dffdv
             fdsvdfsg ';sdfg fdl;gdfkglkdfsgkd fgl;sk;dflg ';dfsk  l;kg;kj fgjsdlkfgj lksdfj gklsdfgkljl;sdfkglkjsdfl;gk sdfgkljl;ksdfgl;kjfgkljlkmbbklmnil vjm hxlfjk jkm hsdfvldfk vl; dflvkfsdl;f"
           />
           <StyledProjectcard
+            id="2"
             imgurl="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6426eca048f497375a7f7b2a_work8.webp"
             title="Punch Man"
             description="lorem sldkj skjdflk dflsdkf;lskj jdlksdjf dkfjl;s ajkjdlkjdflk jsdlf ldflkdf ldjsf;kdsf jkadslfad;sf l;kdf ljld;  ajdflk dsfkj adsl;fj ldskj fj dkslfjd kljdlkj kljlj kjdvjnvhncv  dffdv
             fdsvdfsg ';sdfg fdl;gdfkglkdfsgkd fgl;sk;dflg ';dfsk  l;kg;kj fgjsdlkfgj lksdfj gklsdfgkljl;sdfkglkjsdfl;gk sdfgkljl;ksdfgl;kjfgkljlkmbbklmnil vjm hxlfjk jkm hsdfvldfk vl; dflvkfsdl;f"
           />
           <StyledProjectcard
+            id="3"
             imgurl="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6426eca048f497375a7f7b2a_work8.webp"
             title="Punch Man"
             description="lorem sldkj skjdflk dflsdkf;lskj jdlksdjf dkfjl;s ajkjdlkjdflk jsdlf ldflkdf ldjsf;kdsf jkadslfad;sf l;kdf ljld;  ajdflk dsfkj adsl;fj ldskj fj dkslfjd kljdlkj kljlj kjdvjnvhncv  dffdv
           fdsvdfsg ';sdfg fdl;gdfkglkdfsgkd fgl;sk;dflg ';dfsk  l;kg;kj fgjsdlkfgj lksdfj gklsdfgkljl;sdfkglkjsdfl;gk sdfgkljl;ksdfgl;kjfgkljlkmbbklmnil vjm hxlfjk jkm hsdfvldfk vl; dflvkfsdl;f"
           />
           <StyledProjectcard
+            id="4"
             imgurl="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6426eca048f497375a7f7b2a_work8.webp"
             title="Punch Man"
             description="lorem sldkj skjdflk dflsdkf;lskj jdlksdjf dkfjl;s ajkjdlkjdflk jsdlf ldflkdf ldjsf;kdsf jkadslfad;sf l;kdf ljld;  ajdflk dsfkj adsl;fj ldskj fj dkslfjd kljdlkj kljlj kjdvjnvhncv  dffdv

@@ -6,7 +6,12 @@ import { Link } from "react-router-dom";
 
 const StyledNavbar = styled.nav`
   padding: 0 4.5%;
-  background-color: rgba(255, 255, 255, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  border: 1px solid black;
 `;
 const Container = styled.div`
   display: flex;
