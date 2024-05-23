@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Servicecard from "../components/Servicecard";
 
 const StyledHome = styled.div`
-  padding: 8% 12%;
+  padding: 8% 6%;
 `;
 const Topsection = styled.div``;
 const Topheading = styled.div`

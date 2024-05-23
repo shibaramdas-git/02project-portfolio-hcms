@@ -5,7 +5,7 @@ import { GiSnake } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
 const StyledNavbar = styled.nav`
-  padding: 0 4.5%;
+  padding: 0 2%;
   position: fixed;
   top: 0;
   left: 0;
@@ -111,7 +111,7 @@ function Navbar() {
           <Link to="/">Alev</Link>
         </Navtext>
         <Menuicon onClick={handleClick}>
-          Menu <RxHamburgerMenu />
+          <RxHamburgerMenu />
         </Menuicon>
         <NavExtended shownav={shownav} onClick={handleClick}>
           <div>
