@@ -3,19 +3,20 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Styledcard = styled.div`
-  width: 45%;
+  width: 48%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 2%;
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* display: block; */
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
   }
   a {
     color: black;
     text-decoration: none;
+    display: block;
   }
   h4:hover,
   p:hover {
@@ -25,11 +26,13 @@ const Styledcard = styled.div`
     width: 100%;
   }
   h4 {
-    margin-top: 20px;
+    margin: 20px 0;
+    font-size: 24px;
   }
   p {
-    padding: 8px;
+    font-size: 20px;
     color: gray;
+    font-weight: 300;
   }
 `;
 function Projectcard(props) {

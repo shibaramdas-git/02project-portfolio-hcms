@@ -11,7 +11,9 @@ const StyledNavbar = styled.nav`
   left: 0;
   width: 100%;
   z-index: 100;
-  border: 1px solid black;
+  /* background-color: ; */
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 `;
 const Container = styled.div`
   display: flex;

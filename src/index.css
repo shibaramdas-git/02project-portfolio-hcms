@@ -10,11 +10,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px dashed gray;
+  /* border: 1px dashed gray; */
 }
 body {
   font-family: "Rubik", sans-serif;
-  /* background-color: red; */
+  background-color: lightcyan;
 }
 h1 {
   font-size: 100px;
