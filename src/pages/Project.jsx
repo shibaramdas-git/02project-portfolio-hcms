@@ -135,7 +135,7 @@ const Finalwords = styled.div`
     }
   }
 `;
-const Gallery = styled.div``;
+
 const Nextproject = styled.div``;
 
 function Project() {
@@ -187,7 +187,6 @@ function Project() {
       </Projectmobileimg>
       <Banner>Projectid.title</Banner>
       <Finalwords>
-        <Gallery></Gallery>
         <div>
           <h1>Final words comes here</h1>
           <p>
