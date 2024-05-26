@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Projectcard from "../components/Projectcard";
 import { Link } from "react-router-dom";
 import Servicecard from "../components/Servicecard";
+import { client, urlFor } from "../client";
 
 const StyledHome = styled.div`
   padding: 120px 10%;
@@ -232,12 +233,37 @@ const Servicesection = styled.div`
   }
 `;
 const ServiceWrapper = styled.div`
-  .service-card {
-    background-color: red;
-  }
+  display: flex;
+  flex-direction: column;
+  /* align-content: space-between; */
+  gap: 2em;
 `;
-
 function Home() {
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  useEffect(() => {
+    async function fetchServices() {
+      try {
+        // RandomErrorisignored-bytrycatchblock;
+        setLoading(true);
+        const response = await client.fetch(`*[_type=='services']{
+            servicetype,
+            serviceimgurl,
+            description
+          }`);
+
+        // const data = await response.data;
+        console.log(response);
+        setServices(response);
+      } catch (error) {
+        // console.log(error.message);
+        setError(error.message);
+      }
+      setLoading(false);
+    }
+    fetchServices();
+  }, []);
   return (
     <StyledHome>
       <Topsection>
@@ -339,23 +365,23 @@ function Home() {
               alt="image"
             />
             <img
-              src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6432b989a316081154bbdbb4_shot1.webp"
+              src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6432b988b03b84ce96eabf4a_shot2.webp"
               alt="image"
             />
             <img
-              src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6432b989a316081154bbdbb4_shot1.webp"
+              src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6432b9891ddcb07a69e3d639_shot5.webp"
               alt="image"
             />
             <img
-              src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6432b989a316081154bbdbb4_shot1.webp"
+              src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6432b98857e24b5feac79a52_shot7.webp"
               alt="image"
             />
             <img
-              src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6432b989a316081154bbdbb4_shot1.webp"
+              src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6432b9885d665f1a4b442c55_shot3.webp"
               alt="image"
             />
             <img
-              src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6432b989a316081154bbdbb4_shot1.webp"
+              src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6432b9882bb6b42bc09df6a2_shot6.webp"
               alt="image"
             />
           </Gallery>
@@ -378,12 +404,21 @@ function Home() {
         <h2>Our Services</h2>
         {/* Map here services ..........................................................................*/}
         <ServiceWrapper>
-          <Servicecard
-            // isEven={isEven} -- if index of map is even (i%2 == 0 ) then isEven is true
-            imgurl="https://static.vecteezy.com/system/resources/previews/007/388/098/non_2x/home-landing-page-travel-nature-template-landing-business-page-digital-website-landing-page-design-concept-vector.jpg"
-            title="Landing page development"
-            description="Our web design studio also specializes in developing landing pages. We understand the importance of effective landing pages for your online presence. The landing page designs we create using Webflow help you increase conversions and attract more customers."
-          />
+          {!loading &&
+            services.length > 0 &&
+            services.map((service, i) => {
+              return (
+                <Servicecard
+                  key={i}
+                  imgurl={urlFor(service.serviceimgurl)}
+                  title={service.servicetype}
+                  description={service.description}
+                />
+              );
+            })}
+          {!loading && services.length == 0 && <p>No services data found.</p>}
+          {loading && <p>Loading...</p>}
+          {error && <p>{error}</p>}
         </ServiceWrapper>
       </Servicesection>
     </StyledHome>
