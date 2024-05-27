@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
-import client from "../client";
-import urlFor from "../client";
+import { client } from "../client";
+import { urlFor } from "../client";
 
 const StyledProject = styled.div`
   padding: 0 10%;
@@ -139,67 +139,60 @@ const Finalwords = styled.div`
 
 function Project() {
   const { projectid } = useParams();
-  const [project, setProject] = useState(null);
+  const [project, setProject] = useState([]);
+
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await client.fetch(
+        `*[_type=='project' && id==$projectid]{
+            id,type,title, subtitle, desktopimg, mobileimg, landingimg, whatwedo,finalwords, manifesto
+          }`,
+        { projectid }
+      );
+      console.log(response[0]);
+      setProject(response[0]);
+    } catch (error) {
+      console.error(error);
+    }
+  }, [projectid]);
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
   return (
     <StyledProject>
       <Topheading>
         <div>
-          <p>Project.type</p>
-          <h2>Projectid.title</h2>
-          <p>Project subtitle - project.subtitile</p>
+          <p>{project.type}</p>
+          <h2>{project.title}</h2>
+          <p>{project.subtitle}</p>
         </div>
         <div>
-          <img
-            src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6426ece99094c326a0ec8f80_main.webp"
-            alt="Project image"
-          />
+          {/* <img src={urlFor(project.landingimg)} alt="Project Landing page image"/> */}
         </div>
         <div>
-          <h1>All World Tennis In One News Website </h1>
+          <h1>{project.manifesto}</h1>
           <p>~Manifesto</p>
         </div>
       </Topheading>
       <Projectdesktopimg>
-        <img
-          src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6426ece990a9beed41294aef_image1.webp"
-          alt="Sit image"
-        />
+        {/* <img src={urlFor(project.desktopimg)} alt="Site image" /> */}
       </Projectdesktopimg>
       <Whatwedo>
         <p>What we do</p>
-        <p>
-          Redesigning a website with a huge user base is always a big
-          responsibility. Users sometimes react negatively to changes in
-          interactions that have become familiar, which can bring down ratings.
-          Our Webflow experts found the perfect solution to improve the entire
-          site while maintaining user experience and brand awareness. Our
-          version of the site represents the pinnacle that TNNS has reached in
-          its long journey.
-        </p>
+        <p>{project.whatwedo}</p>
       </Whatwedo>
       <Projectmobileimg>
-        <img
-          src="https://assets-global.website-files.com/62d7e483a751a962bd1e9d4a/6426ece70df2632494e471cc_image2.webp"
-          alt="Sit image"
-        />
+        {/* <img src={urlFor(project.mobileimg)} alt="Site image" /> */}
       </Projectmobileimg>
-      <Banner>Projectid.title</Banner>
+      <Banner>{project.title}</Banner>
       <Finalwords>
         <div>
-          <h1>Final words comes here</h1>
-          <p>
-            One of the main tasks was to ensure that the project noticeably
-            outperformed its competitors with its appearance. Based on current
-            trends and the talent of our web designers, we have created a unique
-            user experience, a design that works just as effectively as the rest
-            of the components of a successful website.
-          </p>
+          <h1>{project.finalwords.title}</h1>
+          <p>{project.finalwords.description}</p>
           <Link to="/contacts">~ Contact us ~</Link>
         </div>
       </Finalwords>
-      <Nextproject>
-        {/* <Link to={`/works/${}`}>Next Project</Link> */}
-      </Nextproject>
     </StyledProject>
   );
 }
