@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
+import client from "../client";
+import urlFor from "../client";
 
 const StyledProject = styled.div`
   padding: 0 10%;
@@ -14,7 +16,6 @@ const StyledProject = styled.div`
     padding: 0 2%;
   }
 `;
-
 const Topheading = styled.div`
   div:nth-child(1) {
     margin-top: 20%;
@@ -136,12 +137,9 @@ const Finalwords = styled.div`
   }
 `;
 
-const Nextproject = styled.div``;
-
 function Project() {
   const { projectid } = useParams();
-  // const numid = parseInt(projectid);
-  // const [numid, setNumid] = useState(parseInt(projectid));
+  const [project, setProject] = useState(null);
   return (
     <StyledProject>
       <Topheading>
